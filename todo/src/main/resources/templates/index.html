@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Todo</title>
+</head>
+<body>
+<div align="center" class="table-responsive">
+    <h1>Todo App</h1>
+    <br/>
+    <a href="add">Add a Todo</a>
+    <br/>
+    <br/>
+    <table class="table table-striped  table-striped">
+        <form action="#" th:action="@{/}" id="for" method="post">
+
+            <tr><a th:href="@{'/'}">View All Tasks</a></tr>
+            <br/>
+            <br/>
+            <tr><a th:href="@{'/'+'progress'}">View All Tasks In Progress</a></tr>
+            <br/>
+            <br/>
+            <tr><a th:href="@{'/'+'completed'}">View All Completed Tasks</a></tr>
+            <br/>
+            <br/>
+            <tr><a th:href="@{'/'+'pending'}">View All Pending Tasks</a></tr>
+            <br/>
+            <br/>
+            <br/>
+        </form>
+        <br/>
+        <br/>
+       <thead class="thead-dark">
+       <tr>
+           <th scope="col">Id</th>
+           <th scope="col">Title</th>
+           <th scope="col">Description</th>
+           <th scope="col">Status</th>
+           <th scope="col">Created At</th>
+           <th scope="col">Updated At</th>
+           <th scope="col">Completed At</th>
+           <th scope="col">Options</th>
+       </tr>
+       </thead>
+        <tbody>
+        <tr th:each="todo : ${listTodo}">
+        <td  th:text = "${todo.id}">Id</td>
+        <td th:text = "${todo.title}">Title</td>
+        <td th:text = "${todo.description}">Description</td>
+        <td th:text = "${todo.status}">Status</td>
+        <td th:text = "${todo.createdAt}">Created At</td>
+        <td th:text = "${todo.updatedAt}">Updated At</td>
+        <td th:text = "${todo.completedAt}">Completed At</td>
+            <td>
+                <a th:href="@{'/editTodo/'+${todo.id}}">Edit</a>
+                &nbsp;&nbsp;
+                &nbsp;                &nbsp;
+                <a th:href="@{'/delete/'+${todo.id}}">Delete</a>
+                &nbsp;&nbsp;
+                &nbsp;                &nbsp;
+                <a th:href="@{'/view/'+${todo.id}}">View</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>View Your Tasks</title>
+</head>
+<body>
+<div align="center" class="table-responsive">
+    <h1>View Your Tasks</h1>
+    <br/>
+    <a th:href="@{/}">Go To HomePage</a>
+       <table class="table table-striped table-light" th:object="${todo}">
+           <tr>
+               <td>Id</td>
+               <td><p th:text="*{id}" ></p> </td>
+           </tr>
+           <tr>
+               <td>Title</td>
+               <td><p th:text="*{title}" ></p> </td>
+           </tr>
+           <tr>
+               <td>Description</td>
+               <td><p th:text="*{description}" ></p> </td>
+           </tr>
+           <tr>
+               <td>Status</td>
+               <td><p th:text="*{status}" ></p> </td>
+           </tr>
+           <tr>
+               <td>Created At</td>
+               <td><p th:text="*{createdAt}" ></p> </td>
+
+           </tr>
+           <tr>
+               <td>Updated At</td>
+               <td><p th:text="*{updatedAt}" ></p> </td>
+
+           </tr>
+
+           <tr>
+               <td>Completed At</td>
+               <td><p th:text="*{completedAt}" ></p> </td>
+
+           </tr>
+       </table>
+   </form>
+</div>
+
+</body>
+</html>
